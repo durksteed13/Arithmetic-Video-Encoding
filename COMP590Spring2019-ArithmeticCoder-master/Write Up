@@ -1,0 +1,32 @@
+A2 Write up
+Durk Steed Jr.
+
+1. What scheme or schemes did you try? If you came up with your own idea, describe it here. 
+→ I used a context adaptive scheme. I pre-processed that data before encoding it. I went through the video frame by frame, 
+and compared each pixel’s value in a frame to the value of the pixel in the same position in the frame before it. For 
+example, I compared the third pixel in the second frame with the third pixel in the first frame. If the first frame’s 
+third pixel was 155 and the second frame’s third pixel was 150, then I stored 5 in my pre-processed array for the 
+second pixel(155-150.) This allowed smaller numbers such as 0, 1, -1, etc to have a much higher probability of being encoded. 
+
+2. Why do you think scheme would do a good job predicting pixel values? How does your scheme exploit temporal and/spatial 
+coherence?
+→ The scheme does a good job of predicting pixel values because it encodes the differences between a pixel and the pixel 
+before it in the same location on the frame. The values of these differences are fairly low (0, 1, -1, etc) so you can 
+predict the pixel values by using the small differences from the frame before it. This scheme takes advantage of temporal 
+coherence. The scheme takes advantage of the fact that a pixel is likely to not change significantly from the previous frame 
+to the next. 
+
+3. When applying the English text-based models (static, adaptive, and context-adaptive) to the video data, which scheme 
+performed best? Does the scheme you developed compress better or worse than the English text-based models when applied to 
+the video data? If you weren’t able to finish and test your own scheme, how do you think your scheme would fare in 
+comparison to the English text-based models?
+	→ The context-adaptive English text-based model performed the best. The adaptive and static compressed the video file from
+  1.2 MB to roughly 1.1 MB. However, the context adaptive successfully compressed the file to 909 KB. My scheme does better 
+  than all three English text-based models, it compressed the original file from 1.2 MB to a little over 600 KB. 
+
+4. What is one change you could make to your scheme that might improve its results?
+	→ The scheme only takes advantage of temporal coherence of the frames before it. However, temporal coherence applies to 
+  both the pixel’s frames before and after (in the future) because a pixel is likely to stay roughly the same intensity 
+  throughout the video. Perhaps including a way to compare the pixel to the frames before it as well would improve 
+  the results. 
+
